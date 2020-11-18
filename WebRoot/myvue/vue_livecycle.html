@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Vue实例的生命周期</title>
+</head>
+<body>
+	<!--v-on:click 的简写方式 ： @click -->
+	<div id = "app">
+		<!-- <div v-on:click="handleClick">
+			{{message}}
+		</div> -->
+		
+		<!-- <div @click="handleClick">
+			{{message}}
+		</div> -->
+	</div>
+	<script type="text/javascript">
+		
+		/* 生命周期函数就是Vue实例在某一个时间点自动执行的函数 
+			$el 代表最外层的所有元素以及里面的内容了 例如 <div id="app"></div>这部分及其内部的代码
+			
+			截止到 mounted 的输出打印为
+			beforeCreate
+			created
+			<div id="app"></div>
+			beforeMount
+			<div>hello world</div>
+			mount
+		</div>
+		*/
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				test:"hello world"
+			},
+			template:"<div>{{test}}</div>",
+			beforeCreate:function(){
+				console.log("beforeCreate");
+				 
+			},
+			created:function(){
+				console.log("created");
+				
+			},
+			beforeMount:function(){
+				console.log(this.$el);
+				console.log("beforeMount");
+			},
+			mounted:function(){
+				console.log(this.$el);
+				console.log("mount");
+			},
+			beforeDestroy:function(){
+				console.log("beforeDestroy");
+			},
+			destory:function(){
+				console.log(" Destroy");
+			},
+			beforeUpdate:function(){
+				console.log("beforeUpdate");
+			},
+			updated:function(){
+				console.log("updated");
+			}
+			
+		})
+		
+		
+		/* 现在要验证 destroy方法等内容 
+			在控制台输入 vm.$destroy()
+			beforeDestroy
+			destroyed
+		
+		*/
+		
+		/* 现在要验证 update等内容 
+			在控制台输入 vm.test = "dell"
+			beforeUpdate
+			updated
+			"dell"
+		*/
+		
+
+	</script>
+</body>
+
+</html>
