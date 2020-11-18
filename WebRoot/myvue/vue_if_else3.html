@@ -1,0 +1,31 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的条件渲染 if 加 else</title>
+	
+	</head>
+	<body>
+		<!-- 注意点 v-if v-else 必须连在一起 
+			当你给 dom 加入 唯一的 key值时
+		-->
+		<div id = "app">
+			<div v-if="show">
+				用户名：<input key="username"/>
+			</div>
+			<div v-else>
+				邮箱名：<input key="email"/>
+			</div>	
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					show:false
+				}
+			})
+		</script>
+	</body>
+	</html>

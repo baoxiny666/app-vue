@@ -1,0 +1,30 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的条件渲染</title>
+	
+	</head>
+	<body>
+		<div id = "app">
+			<div v-if="show">Hello 条件</div><!-- false 会删除 dom元素 效率低 -->
+			
+			<div v-show ="show">Hello 条件</div><!-- false 会将 dom 进行 display:none的显示 -->
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					show:false
+				},
+				methods:{
+					handleDivClick:function(){
+						this.styleObj.color=this.styleObj.color==="black"?"red":"black";
+					}
+				}
+			})
+		</script>
+	</body>
+	</html>

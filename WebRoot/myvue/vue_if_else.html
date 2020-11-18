@@ -1,0 +1,31 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的条件渲染 if 加 else</title>
+	
+	</head>
+	<body>
+		<!-- 注意点 v-if v-else 必须连在一起 -->
+		<div id = "app">
+			<div v-if="show">Hello 条件</div><!-- false 会删除 dom元素 效率低 -->
+			<div v-else>Bye World</div>
+				
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					show:false
+				},
+				methods:{
+					handleDivClick:function(){
+						this.styleObj.color=this.styleObj.color==="black"?"red":"black";
+					}
+				}
+			})
+		</script>
+	</body>
+	</html>
