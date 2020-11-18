@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>组件中的细节点-计数器版本二</title>
+</head>
+<body>
+	<!-- 父组件传给 子组件的值 子组件不能改变，解决办法是 在子组件中 付给另外一个变量 number-->
+	<div id = "app">
+		<!-- count加上冒号 后面的 0 不是一个字符串 而是一个数字 ,引号里面的是js表达式  （这是父组件通过属性的形式向子组件传递了一个名为count的数据，然后子组件要接收一下，接收用props）-->
+		<counter :count="0" @inc="handleIncrease"></counter>
+		<counter :count="0" @inc="handleIncrease"></counter>
+		<div>{{total}}</div>
+	</div>
+
+	<script type="text/javascript">
+	
+	    var counter={
+	    		props:['count'],
+	    		data:function(){
+	    			return{
+	    				number:this.count
+	    			}
+					
+				},
+	    		template:"<div @click='handleClick'>{{number}}</div>",
+	    		methods:{
+	    			handleClick:function(){
+	    				this.number++;
+	    				this.$emit("inc",1);
+	    			}
+	    		}
+	    }
+		
+		
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				total:0
+			},
+			components:{
+				counter:counter
+			},
+			methods:{
+				handleIncrease:function(step){
+					this.total +=step; 
+				}
+			}
+		})
+		
+		
+	/*子组件向父组件传值 可以通过事件的形式 */
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>组件中的细节点</title>
+</head>
+<body>
+	<!--注意了 在写表格时 在 tbody 里面一定要写 tr 且 tr用到了子组件
+			其实不光是 在表格中 在 ul li中 要写 li  在 select option 时要写option
+			
+			
+			2.还有第二点注意事项 在子组件中 定义 data 的 时候,不能使用对象，要使用函数
+		 -->
+	<div id = "app">
+		<table>
+			<tbody>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		/* 子组件 第一种情况*/
+		Vue.component("row",{
+			template:"<tr><td>this is a row</td></tr>"
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+		
+		
+	
+
+	</script>
+</body>
+
+</html>

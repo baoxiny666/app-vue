@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>组件中的细节点-计数器版本一 </title>
+</head>
+<body>
+	
+	<div id = "app">
+		
+		<counter ref="one"  @change="handleChange"></counter>
+		<counter ref="two"  @change="handleChange"></counter>
+		<div>{{total}}</div>
+	</div>
+
+	<script type="text/javascript">
+	
+		Vue.component("counter",{
+			data:function(){
+				return {
+					number:0
+				}
+			},
+			template:"<div @click='handleClick'>{{number}}</div>",
+			methods:{
+				handleClick:function(){
+					this.number++;
+					this.$emit("change");
+				}
+			}
+		});
+		
+		
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				total:0
+			},
+			methods:{
+				handleChange:function(){
+					debugger;
+					this.total = this.$refs.one.number + this.$refs.two.number;
+					
+				}
+			}
+		})
+		
+		
+	
+
+	</script>
+</body>
+
+</html>
