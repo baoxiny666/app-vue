@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Vue get set</title>
+</head>
+<body>
+	<!--v-on:click 的简写方式 ： @click -->
+	<div id = "app">
+	
+		<div>{{fullName}}</div>
+		
+	</div>
+	<script type="text/javascript">
+
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				firstName:"DEll",
+				lastName:"Bao"
+				
+			},
+			computed:{
+				fullName:{
+					get:function(){
+						return this.firstName + " " + this.lastName;
+					},
+					set:function(value){
+						console.log(value);
+						var arr = value.split(" ");
+						this.firstName = arr[0];
+						this.lastName = arr[1];
+					}
+				}
+			}
+			
+		})
+		
+		/*  控制台
+		
+			vm.fullName = fjeo gjoe; //这个相当于出发了 fullName的 set的方法
+			然后设置之后， firstName 和 lastName的值跟着改变之后 就会触发 computed的重新计算，
+			你看看 fullName的get方法就知道，他依赖着firstName 和 lastName
+			缓存的机制
+			*/
+
+	</script>
+</body>
+
+</html>
