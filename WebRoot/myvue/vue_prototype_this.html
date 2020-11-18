@@ -1,0 +1,52 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<style type="text/css">
+			.aNewClass{
+				background:red;
+			}
+			
+			.fangkaui{
+				width:100px;
+				height:100px;
+				background:gray;
+			}
+		</style>
+		<title>试验extend合并方法</title>
+	</head>
+	<body>
+		<div id = "app">
+			<input type="text" id="input"/>
+			<button id="btn"  class="fangkaui">提交</button>
+			<ul id="list"></ul>
+		</div>
+		<script type="text/javascript">
+			/*prototype 属性使您有能力向对象添加属性和方法。*/
+			function Page(){
+				
+			}
+			
+			$.extend(Page.prototype,{
+					init:function(){
+						this.bindEvent();
+					},
+					bindEvent:function(){
+						$("#btn").on("click",$.proxy(this.BtnClickSite,this));
+					},
+					BtnClickSite:function(){
+						var inputValue = $("#input");
+					    var eleMe = $("#list"); 
+					    eleMe.append("<li>"+inputValue.val()+"</li>");
+					    inputValue.val("");
+					}
+				}
+			)
+			
+			var page = new Page();
+			page.init();
+		</script>
+	</body>
+	</html>

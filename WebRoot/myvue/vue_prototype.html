@@ -1,0 +1,31 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>试验extend合并方法</title>
+	</head>
+	<body>
+		<div id = "app">
+			<input type="text" v-model="inputValue"/>
+			<button v-on:click="handleClickButton">提交</button>
+		</div>
+		<script type="text/javascript">
+			/*prototype 属性使您有能力向对象添加属性和方法。*/
+			function employee(name,job,born){
+				this.name=name;
+				this.job=job;
+				this.born=born;
+			}
+			
+			var bill=new employee("Bill Gates","Engineer",1985);
+			/*在本例中，我们将展示如何使用 prototype 属性来向对象添加属性：*/
+			employee.prototype.salary=null;
+			bill.salary=20000;
+	
+			document.write(bill.salary);
+			alert(bill.salary);
+		</script>
+	</body>
+	</html>
