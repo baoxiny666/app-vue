@@ -1,0 +1,34 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>试验extend合并方法</title>
+	</head>
+	<body>
+		<div id = "app">
+			<input type="text" v-model="inputValue"/>
+			<button v-on:click="handleClickButton">提交</button>
+		</div>
+		<script type="text/javascript">
+			var object1 = {
+		        apple: 0,
+		        banana: {weight: 52, price: 100},
+		        cherry: 97
+		    };
+		    var object2 = {
+		        banana: {price: 200},
+		        durian: 100
+		    };
+			console.log($.extend(object1,object2));
+			
+		/* 打印结果	Object
+			apple: 0
+			banana: {price: 200}
+			cherry: 97
+			durian: 100
+			__proto__: Object */
+		</script>
+	</body>
+	</html>

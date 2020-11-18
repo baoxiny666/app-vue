@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Hello World</title>
+</head>
+<body>
+	<div id = "app">
+		<input type="text" v-model="inputValue"/>
+		<button v-on:click="handleClickButton">提交</button>
+		<ul><li v-for="item in list">{{item}}</li></ul>
+	</div>
+	<script type="text/javascript">
+		/* 	var dom = document.getElementById("app");
+			dom.innerHtml = "hello World"; 
+		*/
+		var app = new Vue({
+			el:"#app",
+			data:{
+				list:[],
+				inputValue:""
+			},
+			methods:{
+				handleClickButton:function(){
+					//直接用 this直接能到达data的 inputValue当中;
+					this.list.push(this.inputValue)
+					this.inputValue = ""
+				}
+			}
+		})
+		//如果想定时刷新某个数值的话 就需要进行如下的操作
+		//$data就是 data的别名
+		/* setTimeout(function(){
+			app.$data.content = "bye world";
+		},2000); */
+		
+	</script>
+</body>
+
+</html>

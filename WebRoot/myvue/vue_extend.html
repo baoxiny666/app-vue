@@ -1,0 +1,28 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>试验extend</title>
+	</head>
+	<body>
+		<div id = "app">
+			<input type="text" v-model="inputValue"/>
+			<button v-on:click="handleClickButton">提交</button>
+		</div>
+		<script type="text/javascript">
+			/*相当于定义jquery类的静态方法*/
+			$.extend({
+			    min: function(a, b) {
+			        return a < b ? a : b;
+			    },
+			    max: function(a, b) {
+			        return a > b ? a : b;
+			    }
+			});
+			alert($.min(2, 3)); //  2 
+			alert($.max(4, 5)); //  5
+		</script>
+	</body>
+	</html>
