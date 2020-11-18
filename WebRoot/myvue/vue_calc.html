@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Vue模板语法</title>
+</head>
+<body>
+	<!--v-on:click 的简写方式 ： @click -->
+	<div id = "app">
+		<div>{{firstName + "" + lastName}}</div>
+		<div>{{fullName}}</div>
+		<div>{{fullXinName}} {{age}}</div>
+		
+		<!--使用 method的 方法定义 -->
+		<div>{{fullXinmethodsName()}}</div>
+		
+	</div>
+	<script type="text/javascript">
+
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				firstName:"DEll",
+				lastName:"Bao",
+				
+				fullName:"Dell Bao",
+				age:28
+				
+			},
+			methods:{
+				fullName:function(){
+					console.log("方法计算了一次");
+					return this.firstName + "" +this.latName;
+				}
+			},
+			computed:{
+				fullXinName:function(){
+					console.log("计算了一次");
+					return this.firstName +" "+this.lastName;
+				}
+			}
+			
+		})
+		
+		/*
+			vm.age = 27
+			但是computed没有重新走，而是用了缓存
+			
+			vm.firstName = RER;
+		 	这时就执行了 console.log("计算了一次");
+			*/
+			
+			
+			
+			/*当我们用 methods进行时，就不会利用缓存
+			vm.age = 27
+			console.log("方法计算来了一次");
+			
+			vm.firstName = RER;
+			 这时就执行了 console.log("方法计算来了一次");
+			*/
+
+	</script>
+</body>
+
+</html>

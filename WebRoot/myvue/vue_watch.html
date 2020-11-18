@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Vue监听器</title>
+</head>
+<body>
+	<!--v-on:click 的简写方式 ： @click -->
+	<div id = "app">
+	
+		<div>{{fullName}}</div>
+		
+	</div>
+	<script type="text/javascript">
+
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				firstName:"DEll",
+				lastName:"Bao",
+				
+				fullName:"Dell Bao",
+				age:28
+				
+			},
+			watch:{
+				firstName:function(){
+					this.fullName = this.firstName +" " + this.lastName;
+					}
+				},
+				lastName:function(){
+					this.fullName = this.firstName +" " + this.lastName;			
+				}
+			}
+			
+		})
+		
+		/*
+			vm.age = 27
+			缓存的机制
+			
+			vm.firstName = "HGFHF"
+			
+			console.log("计算了一次")
+			
+			优先大家使用 computed的属性，因为他更简单
+			
+			*/
+
+	</script>
+</body>
+
+</html>

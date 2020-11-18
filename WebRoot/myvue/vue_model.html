@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>Vue模板语法</title>
+</head>
+<body>
+	<!--v-on:click 的简写方式 ： @click -->
+	<div id = "app">
+		<div>{{namehtml}}</div>
+		<!-- 当我们看到一个 vue指令后面 跟着一个值的时候 ，比如 下面的 “name”,
+		他就不是一个字符串了，他是一个js表达式-，
+		“v-text”的意思是 让 div中的 innerText的内容,变成data里面数据的内容-->
+		<div v-text="nametext"></div>
+		
+		<!-- v-html 指令让  div标签中 的 innerHtml的内容和 name数据变量进行绑定-->
+		<div v-html="namehtml"></div>
+		
+		
+		<!---->
+		<div v-html="namehtml+'LEE'"></div>
+		
+		<!---->
+		<div>{{nametext + ' LEE'}}</div>
+	</div>
+	<script type="text/javascript">
+
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				nametext:"hello world",
+				namehtml:"<h1>你们好</h1>"
+			}
+			
+		})
+		
+		
+	
+
+	</script>
+</body>
+
+</html>
