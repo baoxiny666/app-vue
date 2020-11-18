@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>组件参数校验与非Props特性</title>
+</head>
+<body>
+	<!--
+		 -->
+	<div id = "app">
+		<child :content="hello world"></child>
+		<child :content="123"></child>
+	</div>
+	<script type="text/javascript">
+
+		Vue.component("child",{
+			props:{
+				content:[String,Number], //如果要求是数字就是 Number
+				required:true,
+				default:"morenzhi",
+				validator:function(value){//校验长度
+					return (value.length>5)
+				}
+				
+			},
+			template:"<div>Child</div>"
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+		
+		
+	
+
+	</script>
+</body>
+
+</html>
