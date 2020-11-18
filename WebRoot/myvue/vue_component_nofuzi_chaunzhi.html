@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>组件中非父子传值 (Bus)其实就是 jquery中的 观察者模式 和 订阅模式</title>
+</head>
+<body>
+	<!--
+		 -->
+	<div id = "app">
+		<child content="Dell"></child>
+		<child content="Lee"></child>
+	</div>
+	<script type="text/javascript">
+		
+	
+	  	Vue.prototype.bus = new Vue();
+	  	
+		Vue.component("child",{
+			data:function(){
+				return {
+					selfContent:this.content
+				}
+			},
+			props:['content'],
+			template:"<div @click='handleClick'>{{selfContent}}</div>",
+			methods:{
+				handleClick:function(){
+					this.bus.$emit("incchange",this.selfContent);
+				}
+			},
+			mounted:function(){
+				var _this = this;
+				this.bus.$on('incchange',function(msg){
+					_this.selfContent = msg
+				})
+			}
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+		
+		
+	
+
+	</script>
+</body>
+
+</html>
