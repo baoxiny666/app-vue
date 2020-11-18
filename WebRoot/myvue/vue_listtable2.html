@@ -58,25 +58,70 @@
 			})
 			
 			
-			/* 
-				当我们在 控制台 使用 
+		
+				/* 当我们在 控制台 使用 
 				vm.list[3] = {id:"99999",text:"ehwahe"}
 				时 屏幕上展示的还是原来的三条数据
 				
 				
 				但是下面这种方式就能
-				vm.list.push({id:"99999",text:"ehwahe"})
+				vm.list.push({id:"99999",text:"ehwahe"}) */
 				
 				
 				
-				当我们想修改数组时 使用 以下方法
+					/*当我们想修改数组时 使用 以下方法
 				    1.pop
+				    <!--我们将创建一个数组，然后删除数组的最后一个元素。请注意，这也会改变数组的程度：-->
+						  
+							  
 				    2.push 
+				    
+				    
 				    3.shift
+				    <!--  在本例中，我们将创建一个数组，并删除数组的第一个元素。请注意，这也将改变数组的长度：-->
 				    4.unshift
+				    <!-- unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。-->
+				    
 				    5.splice
-				    6.sort
-				    7.reverse
+				    var list = [];
+				    list.push(1);
+				    list.push(2);
+				    list.push(3);
+				    console.log(list); // [1, 2, 3]
+
+				    // 删除
+				    list.splice(0, 1);  // 删除  -> 从下标为0开始,长度为1
+				    console.log(list); // [2,3]
+				    list.splice(0, 2);  // 删除  -> 从下标为0开始,长度为2
+				    console.log(list); // []
+
+				    //替换
+				    list.splice(0, 1, 4); // 替换 -> 从下标为0开始,长度为1的数组元素替换成4
+				    console.log(list);  // [4,2,3]
+				    list.splice(0, 2, 4); // 替换 -> 从下标为0开始,长度为2的数组元素替换成4(即4,2整体替换成4)
+				    console.log(list);  // [4,3]
+
+				    //添加
+				    list.splice(1, 0, 5); // 表示在下标为1处添加一项5
+				    console.log(list); // [1,5,2,3] 
+				    list.splice(1,0,5,4,3); // 表示在下标为1处依次添加5/4/3三个元素
+				    console.log(list); // [1,5,4,3,2,3]
+				    var list = [1,2,3]
+					 // 删除
+					 var list1 = list.splice(0,1)
+					 console.log(list)  // [2,3]
+					 console.log(list1) // [1]
+					 // 替换
+					 var list2 = list.splice(0,1,2)
+					 console.log(list) // [2,2,3]
+					 console.log(list2) // [2]
+					 // 添加
+					 var list3 = list.splice(0,0,3)
+					 console.log(list) // [3,1,2,3]
+					 console.log(list3) // []
+				    
+				    6.sort //排序
+				    7.reverse //该方法会改变原来的数组，而不会创建新的数组。
 				    
 				    
 				    
@@ -95,7 +140,7 @@
 						   text:"libai"
 					   }]
 			
-			直接改变 list 的引用也是可以的
+			直接改变 list 的引用也是可以的 -->
 			
 			*/
 		</script>

@@ -1,0 +1,43 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的列表渲染 改变数组的形式</title>
+	
+	</head>
+	<body>
+		
+		<div id = "app"> 
+			<template v-for="(item,index) of userInfo">
+				<div >
+					{{item}} ---- {{index}}
+				</div> 
+			</template>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+						userInfo:[23,45,55,32,23,121]
+			
+				}
+			})
+			
+			
+			/* 
+			  	1.       改变数组的引用
+					
+				2.	我们现在改变内容 还有第三种方式
+					Vue.set(vm.userInfo,1,66666);
+					这样也会跟着变
+					
+					
+					
+				3.        第四种方式
+				    vm.$set(vm.userInfo,3,101010)
+			*/
+		</script>
+	</body>
+	</html>
