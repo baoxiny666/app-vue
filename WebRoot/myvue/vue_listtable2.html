@@ -1,0 +1,103 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的列表渲染-对象的渲染</title>
+	
+	</head>
+	<body>
+		<!-- 为了提高我们循环显示的性能，会给每个循环项 加入唯一的 key值 -->
+		<!-- 第一种写法 ：div包裹会被渲染上
+			
+			 第二种写法：template 可以帮助我们包裹一些元素 ，不会被渲染上
+		 -->
+		<div id = "app">
+			<!--第一种写法  -->
+			<div v-for="(item,index) of list" :key="item.id">
+				<div >
+					{{item.text}} ----- {{index}}
+				</div>
+				<span>
+					{{item.text}}
+				</span>
+			</div>
+			
+			<!-- 第二种写法 -->
+			<template v-for="(item,index) of list" :key="item.id">
+				<div >
+					{{item.text}} ----- {{index}}
+				</div>
+				<span>
+					{{item.text}}
+				</span>
+			</template>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+						list:[
+							   {
+								id:"211211",
+								text:"hello"
+							   },
+							   {
+								  id:"232192",
+								  text:"zhangsan"
+							   },
+							   {
+								   id:"323423",
+								   text:"libai"
+							   }
+						]
+					  }
+			
+				
+			})
+			
+			
+			/* 
+				当我们在 控制台 使用 
+				vm.list[3] = {id:"99999",text:"ehwahe"}
+				时 屏幕上展示的还是原来的三条数据
+				
+				
+				但是下面这种方式就能
+				vm.list.push({id:"99999",text:"ehwahe"})
+				
+				
+				
+				当我们想修改数组时 使用 以下方法
+				    1.pop
+				    2.push 
+				    3.shift
+				    4.unshift
+				    5.splice
+				    6.sort
+				    7.reverse
+				    
+				    
+				    
+				    vm.list.splice(1,1,{id:"434343",text:"baoxinyu"})//删除一个 并添加上
+				    
+				    vm.list= [{
+						id:"211211",
+						text:"hello"
+					   },
+					   {
+						  id:"retetre",
+						  text:"fdgsdgss"
+					   },
+					   {
+						   id:"323423",
+						   text:"libai"
+					   }]
+			
+			直接改变 list 的引用也是可以的
+			
+			*/
+		</script>
+	</body>
+	</html>

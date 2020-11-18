@@ -1,0 +1,75 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<title>Vue 中的列表渲染-对象的渲染</title>
+	
+	</head>
+	<body>
+		
+		<div id = "app">
+			<template v-for="(item,key,index) of userInfo">
+				<div >
+					{{item}} ---{{key}}-- {{index}}
+				</div> 
+			</template>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app"  ,
+				data:{
+						userInfo:{
+								   id:"211211",
+								   text:"hello",
+								   name:"ewihiwoji",
+								   address:"天津市"
+						}
+			
+				}
+			})
+			
+			
+			/* 
+				当我们在 控制台 使用 
+				vm.userInfo.name="xiaobudian"
+				屏幕左侧 会跟着变
+				211211 ---id-- 0
+				hello ---text-- 1
+				xiaobudian ---name-- 2
+				天津市 ---address-- 3
+				
+				
+				
+			vm.userInfo.address2323="beijign"
+			vm.userInfo 已经变了 但是页面没变
+			
+			
+			如果想给对象里面加入之后 可以用对象的引用 ，
+			
+			vm.userInfo = {
+					name : "Dell",
+					age:45
+			}
+			页面这时就跟着变了
+			
+			
+			
+			---------------------------------
+			
+		3.	然后我们现在改变内容 还有第三种方式
+			Vue.set(vm.userInfo,"nishishui","Iamboxinyu");
+			这样也会跟着变
+			
+			
+			
+		4. 第四种方式
+		vm.$set(vm.userInfo,"hahhahaha","gfasudogjoas")
+		
+		
+		
+			*/
+		</script>
+	</body>
+	</html>
