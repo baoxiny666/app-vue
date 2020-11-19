@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>vue中的插槽</title>
+</head>
+<body>
+	<!---->
+	<div id = "app">
+		<child>
+			<h1>Dell</h1>
+		</child>
+	</div>
+	<script type="text/javascript">
+		Vue.component("child",{
+			/* template:"<div><slot></slot></div>" */
+			template:"<div><slot>默认内容</slot></div>"//当你上面的 h1不写内容的时候 slot标签中的默认内容 就起作用了
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+
+</html>

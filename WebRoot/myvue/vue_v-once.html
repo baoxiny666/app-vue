@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>vue  v-once</title>
+</head>
+<body>
+	<div id = "app">
+		<body-content>
+			<child-one v-if="type==='child-one'"></child-one>
+			<child-two v-if="type==='child-two'"></child-two>
+			<button @click="ButtonChange">Change</button>
+		</body-content>
+	</div>
+	<script type="text/javascript">
+		Vue.component("child-one",{
+			template:`<div v-once>child-one</div>`
+		})
+		
+		Vue.component("child-two",{
+			template:`<div v-once>child-two</div>`
+		})
+		
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				type:"child-one"
+			},
+			methods:{
+				ButtonChange:function(){
+					this.type = this.type === "child-one"?"child-two":"child-one";
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

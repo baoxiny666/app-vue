@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>vue中的插槽--多个插槽</title>
+</head>
+<body>
+	<!---->
+	<div id = "app">
+		<body-content>
+			<p class="header" slot="header">Dellheader</p>
+			<p class="footer" slot="footer">LEEfooter</p>
+		</body-content>
+	</div>
+	<script type="text/javascript">
+		Vue.component("body-content",{
+			/* template:"<div><slot></slot></div>" */
+			template:`<div>
+							<slot name="header">默认的头</slot>
+							<p>你们好啊</p>
+							<slot name="footer">默认的尾</slot>
+					 </div>`
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+
+</html>

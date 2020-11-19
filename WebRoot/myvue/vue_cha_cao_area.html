@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/vue.js"></script>
+<title>vue中的插槽--作用域插槽</title>
+</head>
+<body>
+	<!---->
+	<div id = "app">
+		<body-content>
+			<template slot-scope="incs">
+				<h1>{{incs.item}}</h1>
+			</template>
+		</body-content>
+	</div>
+	<script type="text/javascript">
+		Vue.component("body-content",{
+			data:function(){
+					return {
+						list:[12,45,32,54]	
+					}
+					
+			},
+			template:`<div>
+							<slot v-for="item of list" :item=item>默认的头</slot>
+					 </div>`
+		})
+		var vm = new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+
+</html>
